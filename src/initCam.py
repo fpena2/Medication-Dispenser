@@ -19,9 +19,9 @@ class imgControler:
     def cropImg(self):
         img = Image.open(self.fpath)
         width, height = img.size
-        left=280
+        left=260
         top=450
-        right =550
-        bottom = 700
+        right =520
+        bottom = 690
         imgOut=img.crop((left, top, right, bottom))
         imgOut.save(self.fpath)
