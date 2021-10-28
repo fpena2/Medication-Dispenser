@@ -2,27 +2,24 @@ import boto3
 from botocore.client import Config
 import os
 
-class commControl:
-    def __init__(self, bucket="", imgFolder=""):
+class commController:
+    def __init__(self, bucket="", bucketFolder=""):
         self.bucket = bucket
-        self.imgFolder = imgFolder
+        self.bucketFolder = bucketFolder
 
-    def getFiles(self):
+    def sendFile(self, imgPath):
+        if os.path.isfile(imgPath):
+            data = open(imgPath, "rb")
+            name = os.path.basename(imgPath)
+            self.startComm(name, data)
+
+    def sendBulk(self, imgFolder):
         for img in os.listdir(self.imgFolder):
             if img.endswith(".jpg"):
                 print(img)
-                data = open(os.path.join(self.imgFolder, img), "rb")
-                name = os.path.basename(img)
-                self.startComm(name, data)
-            
+                getFile(img)
+                
     def startComm(self, name, data):
         s3 = boto3.resource("s3")
-        s3.Bucket(self.bucket).put_object(Key=name, Body=data)
+        s3.Bucket(self.bucket).put_object(Key=self.bucketFolder + name, Body=data)
 
-
-bucket = "smart-pill-dispenser"
-imgFolder = "/home/pi/Desktop/source/Medication-Dispenser/output"
-
-a = commControl(bucket, imgFolder)
-a.getFiles()
-print("done")

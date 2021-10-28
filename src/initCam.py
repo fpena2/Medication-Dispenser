@@ -3,7 +3,7 @@ from datetime import datetime
 from PIL import Image
 import os
 
-class imgControler:
+class imgController:
     def __init__(self, res = (900,900), outFolder = "./output/"):
         self.res = res
         devName = os.uname()[1]
@@ -25,3 +25,6 @@ class imgControler:
         bottom = 690
         imgOut=img.crop((left, top, right, bottom))
         imgOut.save(self.fpath)
+
+    def getImgPath(self):
+        return self.fpath
