@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
-chanList = [21]
+chanList = [15]
 
 class ledController:
 	def __init__(self):
@@ -14,10 +14,3 @@ class ledController:
 		GPIO.output(chanList, GPIO.LOW)
 	def reset(self):
 		GPIO.cleanup()
-
-
-a = ledController()
-a.ledON()
-sleep(5)
-a.ledOFF()
-a.reset()

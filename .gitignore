@@ -1,6 +1,7 @@
 # Dev folders 
 output/
 src/output/
+src/output/__pycache__/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

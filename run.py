@@ -1,5 +1,6 @@
 import sys
 import os
+from time import sleep
 sys.path.append(os.path.abspath("./src/"))
 from initCam import imgController
 from initComm import commController
@@ -9,21 +10,29 @@ from initMotor import *
 resolution = (900, 900)
 imgsDest = "./output/"
 
+# m = motorController()
+# m.rotate(rot_45, release)
+# sleep(1)
+# m.rotate(rot_45, lock)
+# m.reset()
 
-s = imgController(resolution, imgsDest)
-s.getImg()
-s.cropImg()
-picture = s.getImgPath()
+led = ledController()
+led.ledON()
 
+img = imgController(resolution, imgsDest)
+img.getImg()
+img.cropImg()
+picture = img.getImgPath()
+
+led.ledOFF()
+led.reset()
 
 #bucket = "imgstore-pi"
 bucket = "smart-pill-dispenser"
 bucketImgDest = "images/" 
-a = commController(bucket, bucketImgDest)
-a.sendFile(picture)
+aws = commController(bucket, bucketImgDest)
+aws.sendFile(picture)
 print("done")
 
 
-# m = motorController()
-# m.rotate(rot_45, lock)
-# m.reset()
+
