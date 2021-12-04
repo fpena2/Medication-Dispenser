@@ -219,6 +219,8 @@ def loop():
                     # Set to negative to remove from schedule
                     delta = -1
 
+                    sleep(5)
+
                     if dropPill == "pill_1":
                         dropPill_1()
                         takePicture()
@@ -254,6 +256,7 @@ def loop():
 try:
     loop()
 except Exception as e:
+    print(e)
     feedback = {
         "status": "Fatal",
         "notes": "Device is down",
