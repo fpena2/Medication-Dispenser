@@ -17,15 +17,15 @@ class imgController:
         self.fpath = fpath
         cam = PiCamera()
         cam.resolution = self.res
-        cam.capture(fpath)
+        cam.capture(self.fpath)
         cam.close()
 
     def cropImg(self):
         img = Image.open(self.fpath)
-        left = 385
-        top = 430
-        right = 580
-        bottom = 730
+        left = 390
+        top = 435
+        right = 570
+        bottom = 720
         imgOut = img.crop((left, top, right, bottom))
         imgOut.save(self.fpath)
 

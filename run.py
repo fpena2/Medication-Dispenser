@@ -192,7 +192,7 @@ def takeInitialPicture():
 def loop():
     while 1:
         # delay
-        sleep(1)
+        sleep(2)
         # resturns already sorted dictionary
         response = checkDeployTime()
         timeData = response[0]
@@ -255,13 +255,12 @@ def loop():
             sleep(5)
 
 
-loop()
-# try:
-#     loop()
-# except Exception as e:
-#     print(e)
-#     feedback = {
-#         "status": "Fatal",
-#         "notes": "Device is down",
-#     }
-#     updateStatus(feedback)
+try:
+    loop()
+except Exception as e:
+    print(e)
+    feedback = {
+        "status": "Fatal",
+        "notes": "Device is down",
+    }
+    updateStatus(feedback)
