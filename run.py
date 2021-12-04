@@ -40,8 +40,10 @@ if __device__:
 def checkDeployTime():
     deploy_p1 = ""
     id_1 = ""
+    type_1 = ""
     deploy_p2 = ""
     id_2 = ""
+    type_2 = ""
     resultFile = "./msg/Schedule.json"
     msg.getJSON("public/Schedule.json", resultFile)
     with open(resultFile) as f:
@@ -56,17 +58,20 @@ def checkDeployTime():
                 t = datetime.fromisoformat(entry["schedule"])
                 deploy_p1 = t.replace(second=0)
                 id_1 = entry["id"]
+                type_1 = entry["title"]
 
             if entry["label"] == "Channel 2" and deploy_p2 == "":
                 t = datetime.fromisoformat(entry["schedule"])
                 deploy_p2 = t.replace(second=0)
                 id_2 = entry["id"]
+                type_2 = entry["title"]
 
     if deploy_p1 != "" or deploy_p2 != "":
         idRes = {"pill_1": id_1, "pill_2": id_2}
         timeRes = {"pill_1": deploy_p1, "pill_2": deploy_p2}
+        typeRes = {"pill_1": type_1, "pill_2": type_2}
 
-    return [timeRes, idRes]
+    return [timeRes, idRes, typeRes]
 
 
 def updateSchedule(id):
@@ -190,6 +195,7 @@ def loop():
         response = checkDeployTime()
         timeData = response[0]
         idData = response[1]
+        typeData = response[2]
 
         # remove empty keys from schedule
         timeData = {k: v for k, v in timeData.items() if v}
@@ -222,7 +228,7 @@ def loop():
 
                     # update the device feedback
                     feedback = {
-                        "lastPill": "Type1",
+                        "lastPill": typeData[dropPill],
                         "notes": "Your medication is ready!",
                     }
                     updateStatus(feedback)
