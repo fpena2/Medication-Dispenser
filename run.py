@@ -127,7 +127,7 @@ def takePicture():
         img.cropImg()
         picture = img.getImgPath()
         led.ledOFF()
-        led.reset()
+        # led.reset()
         awsPicStore.sendFile(picture)
         # update msg
         lastImgName = os.path.basename(picture)
