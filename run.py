@@ -50,7 +50,7 @@ def checkDeployTime():
         data = json.load(f)
 
         if data == []:
-            return [{}, {}]
+            return [{}, {}, {}]
 
         data = sorted(data, key=lambda d: d['schedule'])
         for entry in data:
