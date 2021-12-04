@@ -8,9 +8,9 @@ msg = msgController(bucket)
 
 
 def test():
-    name = "device.json"
+    # name = "Schedule.json"
     # name = "current.json"
-    # name = "device.json"
+    name = "device.json"
     msg.setFile("public/"+name, "./msg/"+name)
     # s3 = boto3.client("s3")
     # all_objects = s3.list_objects(Bucket=bucket)

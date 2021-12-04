@@ -35,7 +35,9 @@ awsPicStore = commController(bucket, bucketImgDest)
 
 def checkDeployTime():
     deploy_p1 = ""
+    id_1 = ""
     deploy_p2 = ""
+    id_2 = ""
     resultFile = "./msg/Schedule.json"
     msg.getJSON("public/Schedule.json", resultFile)
     with open(resultFile) as f:
@@ -45,16 +47,34 @@ def checkDeployTime():
             if entry["label"] == "Channel 1" and deploy_p1 == "":
                 t = datetime.fromisoformat(entry["schedule"])
                 deploy_p1 = t.replace(second=0)
+                id_1 = entry["id"]
 
             if entry["label"] == "Channel 2" and deploy_p2 == "":
                 t = datetime.fromisoformat(entry["schedule"])
                 deploy_p2 = t.replace(second=0)
+                id_2 = entry["id"]
+
     if deploy_p1 != "" or deploy_p2 != "":
-        res = {"pill_1": deploy_p1,
-               "pill_2": deploy_p2}
-    return res
+        idRes = {"pill_1": id_1, "pill_2": id_2}
+        timeRes = {"pill_1": deploy_p1, "pill_2": deploy_p2}
+
+    return [timeRes, idRes]
 
 # print(checkDeployTime())
+
+
+def updateSchedule(id):
+    resultFile = "./msg/Schedule.json"
+    msg.getJSON("public/Schedule.json", resultFile)
+    data = ""
+    with open("./msg/Schedule.json") as f:
+        data = json.load(f)
+        for d in data.copy():
+            if id in d.values():
+                data.remove(d)
+    data = json.dumps(data)
+    msg.setJSON(data, "public/Schedule.json")
+    msg.getJSON("public/Schedule.json", resultFile)
 
 
 def updateStatus(feedback):
@@ -67,6 +87,7 @@ def updateStatus(feedback):
         data.update(feedback)
         data = json.dumps([data])
         msg.setJSON(data, "public/device.json")
+    msg.getJSON("public/device.json", resultFile)
 
 
 def checkAiScan():
@@ -138,7 +159,7 @@ def run_once(f):
     return wrapper
 
 
-@run_once
+@ run_once
 def takeInitialPicture():
     # led.ledON()
     # img.getImg()
@@ -159,14 +180,13 @@ def takeInitialPicture():
 
 def loop():
     action = run_once(takeInitialPicture)
-    flag = False
-
-    # dropTime = datetime.now().replace(microsecond=0) + timedelta(minutes=3)
-    # todayTime = datetime.now().replace(microsecond=0)
 
     while 1:
         # resturns already sorted dictionary
-        timeData = checkDeployTime()
+        response = checkDeployTime()
+        timeData = response[0]
+        idData = response[1]
+
         # timeData = dict(sorted(timeData.items(), key=lambda item: item[1]))
         if not timeData["pill_1"] == "" and not timeData["pill_2"] == "":
             dropPill = next(iter(timeData))
@@ -174,26 +194,26 @@ def loop():
             timeZone = timeData[dropPill].tzinfo
             todayTime = datetime.now(timeZone).replace(second=0, microsecond=0)
 
-            # todayTime = todayTime + timedelta(seconds=1)
             print(dropTime - todayTime)
-            # print(dropTime - todayTime)
-            # print(timedelta(minutes=1))
 
-            if (dropTime - todayTime < timedelta(minutes=2)):
+            if (dropTime - todayTime < timedelta(minutes=1)):
                 # Take picture once
                 aiScan = action()
                 if aiScan == True:
                     print("Initial picture looks good")
-                    flag = True
-
-            if flag == True:
-                if (dropTime - todayTime < timedelta(minutes=1)):
                     print("Drop the pill")
-                    flag = False
+
+            # If the time has passed
+            if todayTime > dropTime:
+                # remove pill from the schedule
+                id = idData[dropPill]
+                updateSchedule(id)
+                # allow drop to happen again
+                action.has_run = False
+
         else:
             print("Pill was not found in the schedule")
             sleep(5)
-            pass
 
 
 loop()
