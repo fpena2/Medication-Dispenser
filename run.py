@@ -134,6 +134,7 @@ def takePicture():
         img.getImg()
         img.cropImg()
         picture = img.getImgPath()
+        print(picture)
         led.ledOFF()
         awsPicStore.sendFile(picture)
         # update msg
@@ -253,12 +254,13 @@ def loop():
             sleep(5)
 
 
-try:
-    loop()
-except Exception as e:
-    print(e)
-    feedback = {
-        "status": "Fatal",
-        "notes": "Device is down",
-    }
-    updateStatus(feedback)
+loop()
+# try:
+#     loop()
+# except Exception as e:
+#     print(e)
+#     feedback = {
+#         "status": "Fatal",
+#         "notes": "Device is down",
+#     }
+#     updateStatus(feedback)
