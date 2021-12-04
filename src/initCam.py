@@ -7,15 +7,17 @@ import os
 class imgController:
     def __init__(self, res=(900, 900), outFolder="./output/"):
         self.res = res
-        devName = os.uname()[1]
-        currTime = datetime.now().strftime("%m-%d-%y_%H:%M:%S")
-        fname = "{}_{}.jpg".format(devName, currTime)
-        self.fpath = os.path.join(outFolder, fname)
+        self.outFolder = outFolder
+        self.devName = os.uname()[1]
+        self.fpath = ""
 
-    def getImg(self):
+    def getImg(self, time):
+        fname = "{}_{}.jpg".format(self.devName, time)
+        fpath = os.path.join(self.outFolder, fname)
+        self.fpath = fpath
         cam = PiCamera()
         cam.resolution = self.res
-        cam.capture(self.fpath)
+        cam.capture(fpath)
         cam.close()
 
     def cropImg(self):

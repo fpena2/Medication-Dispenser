@@ -131,7 +131,8 @@ def checkAiScan():
 def takePicture():
     if __device__:
         led.ledON()
-        img.getImg()
+        currTime = datetime.now().strftime("%m-%d-%y_%H:%M:%S")
+        img.getImg(currTime)
         img.cropImg()
         picture = img.getImgPath()
         print(picture)
