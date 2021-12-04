@@ -195,8 +195,9 @@ def loop():
             todayTime = datetime.now(timeZone).replace(second=0, microsecond=0)
 
             print(dropTime - todayTime)
+            delta = dropTime - todayTime
 
-            if (dropTime - todayTime < timedelta(minutes=1)):
+            if (delta < timedelta(minutes=1) and delta > timedelta(minutes=0)):
                 # Take picture once
                 aiScan = action()
                 if aiScan == True:
