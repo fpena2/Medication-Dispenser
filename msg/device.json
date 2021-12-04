@@ -1,8 +1,1 @@
-{
-    "deviceOutput": {
-        "status": "waiting",
-        "notes": "Device is waiting for platform to be cleared",
-        "lastPill": "Pill_2",
-        "lastImg": "Device001_11-03-21_23: 47:39.jpg"
-    }
-}
+[{"status": "Ready: ", "notes": "Device is ready & platform is clear", "lastPill": "PillName", "lastImg": "Device001_11-03-21_23: 47:39.jpg"}]
