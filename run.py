@@ -133,12 +133,13 @@ def takePicture():
         lastImgName = os.path.basename(picture)
         healtyBeat = {"lastImg": lastImgName}
         updateStatus(healtyBeat)
-    print("Taking picture of pill...")
+    print("Taken a picture of pill...")
     return
 
 
 def dropPill_1():
-    print("Droping pill_1")
+    print("Droping pill_1 (5 seconds wait)")
+    sleep(5)
     if __device__:
         # motor_1.rotate(rot_45, release)
         # sleep(1)
@@ -148,7 +149,8 @@ def dropPill_1():
 
 
 def dropPill_2():
-    print("Droping pill_2")
+    print("Droping pill_2 (5 seconds wait)")
+    sleep(5)
     if __device__:
         # motor_2.rotate(rot_45, release)
         # sleep(1)
@@ -211,10 +213,10 @@ def loop():
 
                     if dropPill == "pill_1":
                         dropPill_1()
-                        # takePicture()
+                        takePicture()
                     if dropPill == "pill_2":
                         dropPill_2()
-                        # takePicture()
+                        takePicture()
                 else:
                     print("Platform needs to be cleared")
                     delta = -1
