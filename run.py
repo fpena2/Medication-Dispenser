@@ -211,10 +211,10 @@ def loop():
 
                     if dropPill == "pill_1":
                         dropPill_1()
-                        takePicture()
+                        # takePicture()
                     if dropPill == "pill_2":
                         dropPill_2()
-                        takePicture()
+                        # takePicture()
                 else:
                     print("Platform needs to be cleared")
                     delta = -1
