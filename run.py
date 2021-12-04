@@ -182,6 +182,8 @@ def loop():
     action = run_once(takeInitialPicture)
 
     while 1:
+        # delay
+        sleep(1)
         # resturns already sorted dictionary
         response = checkDeployTime()
         timeData = response[0]
@@ -193,20 +195,23 @@ def loop():
 
         if timeData != {}:
             dropPill = next(iter(timeData))
-            print(dropPill)
-            print(timeData[dropPill])
-            dropTime = timeData[dropPill].replace(second=0, microsecond=0)
+            dropTime = timeData[dropPill].replace(microsecond=0)
             timeZone = timeData[dropPill].tzinfo
-            todayTime = datetime.now(timeZone).replace(second=0, microsecond=0)
+            todayTime = datetime.now(timeZone).replace(microsecond=0)
 
-            print(dropTime - todayTime)
             delta = dropTime - todayTime
+            delta = delta.total_seconds()
+            print(delta)
 
-            if (delta < timedelta(minutes=1) and delta > timedelta(minutes=0)):
+            if (delta > 0 and delta < 60):
                 # Take picture once
                 aiScan = action()
                 if aiScan == True:
                     print("Initial picture looks good")
+
+                    # Set to negative to remove from schedule
+                    delta = -1
+
                     if dropPill == "pill_1":
                         dropPill_1()
                         takePicture()
@@ -215,7 +220,7 @@ def loop():
                         takePicture()
 
             # If the time has passed
-            if todayTime > dropTime:
+            if delta < 0:
                 # remove pill from the schedule
                 id = idData[dropPill]
                 updateSchedule(id)
