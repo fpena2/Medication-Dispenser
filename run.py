@@ -214,6 +214,8 @@ def loop():
             print(delta)
 
             if (delta > 0 and delta < 60):
+                sleep(10)
+
                 # take picture once
                 if takeInitialPicture() == True:
                     print("Initial picture looks good")
