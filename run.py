@@ -1,18 +1,20 @@
 import sys
 import os
-import random
-from functools import wraps
-from time import sleep
 import json
 import datetime
 from datetime import datetime, timedelta
+from functools import wraps
+from time import sleep
+
+__device__ = True if "pi" in os.environ['USER'] else False
 
 sys.path.append(os.path.abspath("./src/"))  # nopep8
 from initMsg import msgController
 from initComm import commController
-# from initCam import imgController
-# from initLED import ledController
-# from initMotor import *
+if __device__:
+    from initCam import imgController
+    from initLED import ledController
+    from initMotor import *
 
 
 # Input to the Objects
@@ -28,10 +30,11 @@ imgsDest = "./output/"
 
 #  List of Objects
 msg = msgController(bucket)
-# led = ledController()
 awsPicStore = commController(bucket, bucketImgDest)
-# img = imgController(resolution, imgsDest)
-# motor = motorController()
+if __device__:
+    led = ledController()
+    img = imgController(resolution, imgsDest)
+    motor_1 = motorController()
 
 
 def checkDeployTime():
@@ -118,37 +121,40 @@ def checkAiScan():
 
 
 def takePicture():
-    # led.ledON()
-    # img.getImg()
-    # img.cropImg()
-    # picture = img.getImgPath()
-    # led.ledOFF()
-    # led.reset()
-    # aws.sendFile(picture)
-
-    # update msg
-    # lastImgName = os.path.basename(picture)
-    # healtyBeat = {"lastImg": lastImgName}
-    # updateStatus()
-    print("Taking picture of pill")
-    sleep(1)
+    if __device__:
+        led.ledON()
+        img.getImg()
+        img.cropImg()
+        picture = img.getImgPath()
+        led.ledOFF()
+        led.reset()
+        awsPicStore.sendFile(picture)
+        # update msg
+        lastImgName = os.path.basename(picture)
+        healtyBeat = {"lastImg": lastImgName}
+        updateStatus(healtyBeat)
+    print("Taking picture of pill...")
     return
 
 
 def dropPill_1():
     print("Droping pill_1")
-    # motor_1.rotate(rot_45, release)
-    # sleep(1)
-    # motor_1.rotate(rot_45, lock)
-    # motor_1.reset()
+    if __device__:
+        # motor_1.rotate(rot_45, release)
+        # sleep(1)
+        # motor_1.rotate(rot_45, lock)
+        # motor_1.reset()
+        pass
 
 
 def dropPill_2():
     print("Droping pill_2")
-    # motor_2.rotate(rot_45, release)
-    # sleep(1)
-    # motor_2.rotate(rot_45, lock)
-    # motor_2.reset()
+    if __device__:
+        # motor_2.rotate(rot_45, release)
+        # sleep(1)
+        # motor_2.rotate(rot_45, lock)
+        # motor_2.reset()
+        pass
 
 
 def run_once(f):
@@ -164,23 +170,12 @@ def run_once(f):
 
 @run_once
 def takeInitialPicture():
-    # led.ledON()
-    # img.getImg()
-    # img.cropImg()
-    # picture = img.getImgPath()
-    # led.ledOFF()
-    # led.reset()
-    # aws.sendFile(picture)
-
-    # update msg
-    # lastImgName = os.path.basename(picture)
-    # healtyBeat = {"lastImg": lastImgName}
-    # updateStatus()
-    print("Initial picture taken")
-    sleep(1)
-    res = checkAiScan()
-    print(res)
-    return res
+    if __device__:
+        takePicture()
+    print("Initial picture taken...")
+    # check the platform
+    response = checkAiScan()
+    return response
 
 
 def loop():
