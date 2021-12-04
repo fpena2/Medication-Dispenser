@@ -1,6 +1,7 @@
 import sys
 import os
 import random
+from functools import wraps
 from time import sleep
 import json
 import datetime
@@ -143,7 +144,7 @@ def dropPill_1():
 
 
 def dropPill_2():
-    print("Droping pill_1")
+    print("Droping pill_2")
     # motor_2.rotate(rot_45, release)
     # sleep(1)
     # motor_2.rotate(rot_45, lock)
@@ -151,15 +152,17 @@ def dropPill_2():
 
 
 def run_once(f):
+    @wraps(f)
     def wrapper(*args, **kwargs):
         if not wrapper.has_run:
+            result = f(*args, **kwargs)
             wrapper.has_run = True
-            return f(*args, **kwargs)
+            return result
     wrapper.has_run = False
     return wrapper
 
 
-@ run_once
+@run_once
 def takeInitialPicture():
     # led.ledON()
     # img.getImg()
@@ -175,12 +178,12 @@ def takeInitialPicture():
     # updateStatus()
     print("Initial picture taken")
     sleep(1)
-    return checkAiScan()
+    res = checkAiScan()
+    print(res)
+    return res
 
 
 def loop():
-    action = run_once(takeInitialPicture)
-
     while 1:
         # delay
         sleep(1)
@@ -204,9 +207,8 @@ def loop():
             print(delta)
 
             if (delta > 0 and delta < 60):
-                # Take picture once
-                aiScan = action()
-                if aiScan == True:
+                # take picture once
+                if takeInitialPicture() == True:
                     print("Initial picture looks good")
 
                     # Set to negative to remove from schedule
@@ -218,14 +220,18 @@ def loop():
                     if dropPill == "pill_2":
                         dropPill_2()
                         takePicture()
+                else:
+                    print("Platform needs to be cleared")
+                    delta = -1
 
             # If the time has passed
             if delta < 0:
+                # allow drop to happen again
+                takeInitialPicture.has_run = False
                 # remove pill from the schedule
                 id = idData[dropPill]
                 updateSchedule(id)
-                # allow drop to happen again
-                action.has_run = False
+
         else:
             print("No pills found in schedule")
             print("sleeping for 5 sec")
