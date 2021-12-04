@@ -107,7 +107,7 @@ def checkAiScan():
             # platform is cleared, proceed to deploy pill
             result = True
             feedback = {
-                "status": "Ready: ",
+                "status": "Ready",
                 "notes": "Device is ready & platform is clear",
             }
         else:
@@ -127,7 +127,6 @@ def takePicture():
         img.cropImg()
         picture = img.getImgPath()
         led.ledOFF()
-        # led.reset()
         awsPicStore.sendFile(picture)
         # update msg
         lastImgName = os.path.basename(picture)
@@ -217,6 +216,14 @@ def loop():
                     if dropPill == "pill_2":
                         dropPill_2()
                         takePicture()
+
+                    # update the device feedback
+                    feedback = {
+                        "lastPill": dropPill,
+                        "notes": "Your medication is ready!",
+                    }
+                    updateStatus(feedback)
+
                 else:
                     print("Platform needs to be cleared")
                     delta = -1
@@ -235,4 +242,11 @@ def loop():
             sleep(5)
 
 
-loop()
+try:
+    loop()
+except Exception as e:
+    feedback = {
+        "status": "Fatal",
+        "notes": "Device is down",
+    }
+    updateStatus(feedback)
