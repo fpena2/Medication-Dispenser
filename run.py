@@ -42,6 +42,10 @@ def checkDeployTime():
     msg.getJSON("public/Schedule.json", resultFile)
     with open(resultFile) as f:
         data = json.load(f)
+
+        if data == []:
+            return [{}, {}]
+
         data = sorted(data, key=lambda d: d['schedule'])
         for entry in data:
             if entry["label"] == "Channel 1" and deploy_p1 == "":
@@ -59,8 +63,6 @@ def checkDeployTime():
         timeRes = {"pill_1": deploy_p1, "pill_2": deploy_p2}
 
     return [timeRes, idRes]
-
-# print(checkDeployTime())
 
 
 def updateSchedule(id):
@@ -114,9 +116,6 @@ def checkAiScan():
         return result
 
 
-# print(checkAiScan())
-
-
 def takePicture():
     # led.ledON()
     # img.getImg()
@@ -130,8 +129,9 @@ def takePicture():
     # lastImgName = os.path.basename(picture)
     # healtyBeat = {"lastImg": lastImgName}
     # updateStatus()
+    print("Taking picture of pill")
     sleep(1)
-    return checkAiScan()
+    return
 
 
 def dropPill_1():
@@ -173,7 +173,7 @@ def takeInitialPicture():
     # lastImgName = os.path.basename(picture)
     # healtyBeat = {"lastImg": lastImgName}
     # updateStatus()
-    print("Take one picture")
+    print("Initial picture taken")
     sleep(1)
     return checkAiScan()
 
@@ -188,7 +188,7 @@ def loop():
         idData = response[1]
 
         # timeData = dict(sorted(timeData.items(), key=lambda item: item[1]))
-        if not timeData["pill_1"] == "" and not timeData["pill_2"] == "":
+        if timeData != {}:
             dropPill = next(iter(timeData))
             dropTime = timeData[dropPill].replace(second=0, microsecond=0)
             timeZone = timeData[dropPill].tzinfo
@@ -201,7 +201,12 @@ def loop():
                 aiScan = action()
                 if aiScan == True:
                     print("Initial picture looks good")
-                    print("Drop the pill")
+                    if dropPill == "pill_1":
+                        dropPill_1()
+                        takePicture()
+                    if dropPill == "pill_2":
+                        dropPill_2()
+                        takePicture()
 
             # If the time has passed
             if todayTime > dropTime:
@@ -210,9 +215,9 @@ def loop():
                 updateSchedule(id)
                 # allow drop to happen again
                 action.has_run = False
-
         else:
-            print("Pill was not found in the schedule")
+            print("No pills found in the schedule")
+            print("sleeping for 5 sec")
             sleep(5)
 
 
