@@ -187,9 +187,14 @@ def loop():
         timeData = response[0]
         idData = response[1]
 
-        # timeData = dict(sorted(timeData.items(), key=lambda item: item[1]))
+        # remove empty keys from schedule
+        timeData = {k: v for k, v in timeData.items() if v}
+        idData = {k: v for k, v in idData.items() if v}
+
         if timeData != {}:
             dropPill = next(iter(timeData))
+            print(dropPill)
+            print(timeData[dropPill])
             dropTime = timeData[dropPill].replace(second=0, microsecond=0)
             timeZone = timeData[dropPill].tzinfo
             todayTime = datetime.now(timeZone).replace(second=0, microsecond=0)
@@ -217,7 +222,7 @@ def loop():
                 # allow drop to happen again
                 action.has_run = False
         else:
-            print("No pills found in the schedule")
+            print("No pills found in schedule")
             print("sleeping for 5 sec")
             sleep(5)
 
