@@ -1,8 +1,10 @@
 import sys
 import os
+import random
 from time import sleep
 import json
-from datetime import datetime, date
+import datetime
+from datetime import datetime, timedelta
 
 sys.path.append(os.path.abspath("./src/"))  # nopep8
 from initMsg import msgController
@@ -34,24 +36,36 @@ awsPicStore = commController(bucket, bucketImgDest)
 def checkDeployTime():
     deploy_p1 = ""
     deploy_p2 = ""
-    resultFile = "./msg/schedule.json"
-    msg.getJSON("public/schedule.json", resultFile)
+    resultFile = "./msg/Schedule.json"
+    msg.getJSON("public/Schedule.json", resultFile)
     with open(resultFile) as f:
         data = json.load(f)
-        print(data)
-        # deploy_p1 = data["schedule"]["pill_1"]["delivery"]
-        # deploy_p2 = data["schedule"]["pill_2"]["delivery"]
+        data = sorted(data, key=lambda d: d['schedule'])
+        for entry in data:
+            if entry["label"] == "Channel 1" and deploy_p1 == "":
+                t = datetime.fromisoformat(entry["schedule"])
+                deploy_p1 = t.replace(second=0)
 
-    res = {"pill_1": datetime.fromisoformat(deploy_p1).replace(second=0),
-           "pill_2": datetime.fromisoformat(deploy_p2).replace(second=0)}
+            if entry["label"] == "Channel 2" and deploy_p2 == "":
+                t = datetime.fromisoformat(entry["schedule"])
+                deploy_p2 = t.replace(second=0)
+    if deploy_p1 != "" or deploy_p2 != "":
+        res = {"pill_1": deploy_p1,
+               "pill_2": deploy_p2}
     return res
+
+# print(checkDeployTime())
 
 
 def updateStatus(feedback):
+    # First pull the latest reply
+    resultFile = "./msg/device.json"
+    msg.getJSON("public/device.json", resultFile)
+    # Update the cloud reply
     with open("./msg/device.json") as f:
-        data = json.load(f)["deviceOutput"]
+        data = json.load(f)[0]
         data.update(feedback)
-        data = json.dumps(data)
+        data = json.dumps([data])
         msg.setJSON(data, "public/device.json")
 
 
@@ -59,16 +73,15 @@ def checkAiScan():
     result = ""
     feedback = ""
     resultFile = "./msg/current.json"
-    msg.getJSON("public/current_test.json", resultFile)
+    msg.getJSON("public/current.json", resultFile)
     with open(resultFile) as f:
         data = json.load(f)["currentPills"]
-
         if data == []:
             # platform is cleared, proceed to deploy pill
             result = True
             feedback = {
-                "status": "Deploying",
-                "notes": "Device is deploying the medication",
+                "status": "Ready: ",
+                "notes": "Device is ready & platform is clear",
             }
         else:
             result = False
@@ -80,48 +93,10 @@ def checkAiScan():
         return result
 
 
-# checkAiScan()
-# checkDeployTime()
+# print(checkAiScan())
 
-# while 1:
 
-if checkAiScan():
-    print("Platform: Good")
-
-    timeData = checkDeployTime()
-    for pill in timeData.copy():
-        timeZone = timeData[pill].tzinfo
-        today = datetime.now(timeZone).replace(second=0)
-        if today > timeData[pill]:
-            timeData.pop(pill, None)
-
-    # sort from closest time to longer
-    timeData = dict(sorted(timeData.items(), key=lambda item: item[1]))
-    dropPill = next(iter(timeData))
-    dropTime = timeData[pill].time()
-    todayTime = datetime.now(timeZone).replace(second=0)
-
-    if (todayTime == timeData):
-        if "pill_1" in dropPill:
-            print("Droping pill_1")
-            # m_1.rotate(rot_45, release)
-            # sleep(1)
-            # m_1.rotate(rot_45, lock)
-            # m_1.reset()
-            pass
-        elif "pill_2" in dropPill:
-            print("Droping pill_1")
-            # m_2.rotate(rot_45, release)
-            # sleep(1)
-            # m_2.rotate(rot_45, lock)
-            # m_2.reset()
-            pass
-        else:
-            print("No pill to drop was found in the schedule")
-else:
-    print("Platform needs to be cleaned")
-
-# heart beat
+def takePicture():
     # led.ledON()
     # img.getImg()
     # img.cropImg()
@@ -129,30 +104,96 @@ else:
     # led.ledOFF()
     # led.reset()
     # aws.sendFile(picture)
-    # print("done")
 
-# sleep(5)
+    # update msg
+    # lastImgName = os.path.basename(picture)
+    # healtyBeat = {"lastImg": lastImgName}
+    # updateStatus()
+    sleep(1)
+    return checkAiScan()
 
-# m = motorController()
-# m.rotate(rot_45, release)
-# sleep(1)
-# m.rotate(rot_45, lock)
-# m.reset()
 
-# led = ledController()
-# led.ledON()
+def dropPill_1():
+    print("Droping pill_1")
+    # motor_1.rotate(rot_45, release)
+    # sleep(1)
+    # motor_1.rotate(rot_45, lock)
+    # motor_1.reset()
 
-# img = imgController(resolution, imgsDest)
-# img.getImg()
-# img.cropImg()
-# picture = img.getImgPath()
 
-# led.ledOFF()
-# led.reset()
+def dropPill_2():
+    print("Droping pill_1")
+    # motor_2.rotate(rot_45, release)
+    # sleep(1)
+    # motor_2.rotate(rot_45, lock)
+    # motor_2.reset()
 
-# #bucket = "imgstore-pi"
-# bucket = "smart-pill-dispenser"
-# bucketImgDest = "images/"
-# aws = commController(bucket, bucketImgDest)
-# aws.sendFile(picture)
-# print("done")
+
+def run_once(f):
+    def wrapper(*args, **kwargs):
+        if not wrapper.has_run:
+            wrapper.has_run = True
+            return f(*args, **kwargs)
+    wrapper.has_run = False
+    return wrapper
+
+
+@run_once
+def takeInitialPicture():
+    # led.ledON()
+    # img.getImg()
+    # img.cropImg()
+    # picture = img.getImgPath()
+    # led.ledOFF()
+    # led.reset()
+    # aws.sendFile(picture)
+
+    # update msg
+    # lastImgName = os.path.basename(picture)
+    # healtyBeat = {"lastImg": lastImgName}
+    # updateStatus()
+    print("Take one picture")
+    sleep(1)
+    return checkAiScan()
+
+
+def loop():
+    action = run_once(takeInitialPicture)
+    flag = False
+
+    # dropTime = datetime.now().replace(microsecond=0) + timedelta(minutes=3)
+    # todayTime = datetime.now().replace(microsecond=0)
+
+    while 1:
+        # resturns already sorted dictionary
+        timeData = checkDeployTime()
+        # timeData = dict(sorted(timeData.items(), key=lambda item: item[1]))
+        if not timeData["pill_1"] == "" and not timeData["pill_2"] == "":
+            dropPill = next(iter(timeData))
+            dropTime = timeData[dropPill].replace(second=0, microsecond=0)
+            timeZone = timeData[dropPill].tzinfo
+            todayTime = datetime.now(timeZone).replace(second=0, microsecond=0)
+
+            # todayTime = todayTime + timedelta(seconds=1)
+            print(dropTime - todayTime)
+            # print(dropTime - todayTime)
+            # print(timedelta(minutes=1))
+
+            if (dropTime - todayTime < timedelta(minutes=2)):
+                # Take picture once
+                aiScan = action()
+                if aiScan == True:
+                    print("Initial picture looks good")
+                    flag = True
+
+            if flag == True:
+                if (dropTime - todayTime < timedelta(minutes=1)):
+                    print("Drop the pill")
+                    flag = False
+        else:
+            print("Pill was not found in the schedule")
+            sleep(5)
+            pass
+
+
+loop()

@@ -13,3 +13,7 @@ class msgController:
     def setJSON(self, inputStr, aws_fullPath):
         input = io.BytesIO(inputStr.encode("utf-8"))
         self.s3.upload_fileobj(input, self.bucket, aws_fullPath)
+
+    def setFile(self, aws_fullPath, filePath):
+        with open(filePath, "rb") as f:
+            self.s3.upload_fileobj(f, self.bucket, aws_fullPath)
