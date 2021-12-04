@@ -92,6 +92,7 @@ def updateStatus(feedback):
         data = json.load(f)[0]
         data.update(feedback)
         data = json.dumps([data])
+        print(data)
         msg.setJSON(data, "public/device.json")
     msg.getJSON("public/device.json", resultFile)
 
@@ -102,7 +103,9 @@ def checkAiScan():
     resultFile = "./msg/current.json"
     msg.getJSON("public/current.json", resultFile)
     with open(resultFile) as f:
-        data = json.load(f)["currentPills"]
+        data = json.load(f)
+        print(data)
+        data = data["currentPills"]
         if data == []:
             # platform is cleared, proceed to deploy pill
             result = True
@@ -130,8 +133,8 @@ def takePicture():
         awsPicStore.sendFile(picture)
         # update msg
         lastImgName = os.path.basename(picture)
-        healtyBeat = {"lastImg": lastImgName}
-        updateStatus(healtyBeat)
+        healthyBeat = {"lastImg": lastImgName}
+        updateStatus(healthyBeat)
     print("Taken a picture of pill...")
     return
 
@@ -219,7 +222,7 @@ def loop():
 
                     # update the device feedback
                     feedback = {
-                        "lastPill": dropPill,
+                        "lastPill": "Type1",
                         "notes": "Your medication is ready!",
                     }
                     updateStatus(feedback)
