@@ -154,18 +154,16 @@ def dropPill_1():
         motor_1.rotate(rot_45, release)
         sleep(1)
         motor_1.rotate(rot_45, lock)
-        pass
 
 
 def dropPill_2():
     print("Droping pill_2...")
     sleep(5)
     if __device__:
-        motor_2.rotate(rot_45, release)
-        sleep(1)
+        # Inverted logic for motor_2 (left)
         motor_2.rotate(rot_45, lock)
-        # motor_2.reset()
-        pass
+        sleep(1)
+        motor_2.rotate(rot_45, release)
 
 
 def run_once(f):
