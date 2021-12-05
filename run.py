@@ -34,7 +34,8 @@ awsPicStore = commController(bucket, bucketImgDest)
 if __device__:
     led = ledController()
     img = imgController(resolution, imgsDest)
-    motor_1 = motorController()
+    motor_1 = motorController(chanList1)  # right
+    motor_2 = motorController(chanList2)  # left
 
 
 def checkDeployTime():
@@ -140,30 +141,29 @@ def takePicture():
         awsPicStore.sendFile(picture)
         # update msg
         lastImgName = os.path.basename(picture)
-        healthyBeat = {"lastImg": lastImgName}
-        updateStatus(healthyBeat)
-    print("Taken a picture of pill...")
+        updateStatus({"lastImg": lastImgName})
+
+    print("Took a picture...")
     return
 
 
 def dropPill_1():
-    print("Droping pill_1 (5 seconds wait)")
+    print("Droping pill_1...")
     sleep(5)
     if __device__:
-        # motor_1.rotate(rot_45, release)
-        # sleep(1)
-        # motor_1.rotate(rot_45, lock)
-        # motor_1.reset()
+        motor_1.rotate(rot_45, release)
+        sleep(1)
+        motor_1.rotate(rot_45, lock)
         pass
 
 
 def dropPill_2():
-    print("Droping pill_2 (5 seconds wait)")
+    print("Droping pill_2...")
     sleep(5)
     if __device__:
-        # motor_2.rotate(rot_45, release)
-        # sleep(1)
-        # motor_2.rotate(rot_45, lock)
+        motor_2.rotate(rot_45, release)
+        sleep(1)
+        motor_2.rotate(rot_45, lock)
         # motor_2.reset()
         pass
 
@@ -183,8 +183,9 @@ def run_once(f):
 def takeInitialPicture():
     if __device__:
         takePicture()
-    print("Initial picture taken...")
+    print("...Initial picture check...")
     # check the platform
+    sleep(10)
     response = checkAiScan()
     return response
 
@@ -192,7 +193,7 @@ def takeInitialPicture():
 def loop():
     while 1:
         # delay
-        sleep(2)
+        sleep(5)
         # resturns already sorted dictionary
         response = checkDeployTime()
         timeData = response[0]
@@ -214,15 +215,12 @@ def loop():
             print(delta)
 
             if (delta > 0 and delta < 60):
-                sleep(10)
-
                 # take picture once
                 if takeInitialPicture() == True:
-                    print("Initial picture looks good")
+                    print("(((Initial picture = Platform is empty)))")
 
                     # Set to negative to remove from schedule
                     delta = -1
-
                     sleep(5)
 
                     if dropPill == "pill_1":
@@ -240,7 +238,7 @@ def loop():
                     updateStatus(feedback)
 
                 else:
-                    print("Platform needs to be cleared")
+                    print("(((Platform needs to be cleared)))")
                     delta = -1
 
             # If the time has passed
