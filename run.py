@@ -249,16 +249,21 @@ def loop():
                     if dropPill == "pill_1":
                         dropPill_1()
                         takePicture()
+                        # update the device feedback
+                        feedback = {
+                            "lastPill": typeData[dropPill],
+                            "notes": "Your medication is ready!",
+                        }
+                        updateStatus(feedback)
                     if dropPill == "pill_2":
                         dropPill_2()
                         takePicture()
-
-                    # update the device feedback
-                    feedback = {
-                        "lastPill": typeData[dropPill],
-                        "notes": "Your medication is ready!",
-                    }
-                    updateStatus(feedback)
+                        # update the device feedback
+                        feedback = {
+                            "lastPill": typeData[dropPill],
+                            "notes": "Your medication is ready!",
+                        }
+                        updateStatus(feedback)
 
                 else:
                     print("(((Platform needs to be cleared)))")
