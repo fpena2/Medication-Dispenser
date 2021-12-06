@@ -39,7 +39,9 @@ if __device__:
 
 
 def checkDeployTime():
-    timeRes, idRes, typeRes = {}
+    timeRes = {}
+    idRes = {}
+    typeRes = {}
 
     deploy_p1 = ""
     id_1 = ""
@@ -205,17 +207,18 @@ def loop():
         # delay
         beat()
         sleep(5)
-        # resturns already sorted dictionary
-        response = checkDeployTime()
+
+        # pulls data from schedule
+        response = checkDeployTime()  # resturns already sorted dictionary
         timeData = response[0]
         idData = response[1]
         typeData = response[2]
 
-        # remove empty keys from schedule
-        timeData = {k: v for k, v in timeData.items() if v}
-        idData = {k: v for k, v in idData.items() if v}
-
         if timeData != {}:
+            # remove empty keys from schedule
+            timeData = {k: v for k, v in timeData.items() if v}
+            idData = {k: v for k, v in idData.items() if v}
+
             dropPill = next(iter(timeData))
             dropTime = timeData[dropPill].replace(microsecond=0)
             timeZone = timeData[dropPill].tzinfo
