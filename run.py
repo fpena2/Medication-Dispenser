@@ -39,12 +39,16 @@ if __device__:
 
 
 def checkDeployTime():
+    timeRes, idRes, typeRes = {}
+
     deploy_p1 = ""
     id_1 = ""
     type_1 = ""
+
     deploy_p2 = ""
     id_2 = ""
     type_2 = ""
+
     resultFile = "./msg/Schedule.json"
     msg.getJSON("public/Schedule.json", resultFile)
     with open(resultFile) as f:
@@ -188,9 +192,18 @@ def takeInitialPicture():
     return response
 
 
+def beat():
+    feedback = {
+        "status": "Healthy",
+        "notes": "Device is good",
+    }
+    updateStatus(feedback)
+
+
 def loop():
     while 1:
         # delay
+        beat()
         sleep(5)
         # resturns already sorted dictionary
         response = checkDeployTime()
