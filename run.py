@@ -34,6 +34,8 @@ awsPicStore = commController(bucket, bucketImgDest)
 if __device__:
     led = ledController()
     img = imgController(resolution, imgsDest)
+    motor_1 = motorController(chanList1)  # right
+    motor_2 = motorController(chanList2)  # left
 
 
 def checkDeployTime():
@@ -157,11 +159,9 @@ def dropPill_1():
     print("Droping pill_1...")
     sleep(5)
     if __device__:
-        motor_1 = motorController(chanList1)  # right
         motor_1.rotate(rot_45, release)
         sleep(1)
         motor_1.rotate(rot_45, lock)
-        motor_1.reset()
 
 
 def dropPill_2():
@@ -169,11 +169,9 @@ def dropPill_2():
     sleep(5)
     if __device__:
         # Inverted logic for motor_2 (left)
-        motor_2 = motorController(chanList2)  # left
         motor_2.rotate(rot_45, lock)
         sleep(1)
         motor_2.rotate(rot_45, release)
-        motor_2.reset()
 
 
 def run_once(f):
