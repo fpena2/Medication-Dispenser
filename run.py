@@ -135,6 +135,7 @@ def checkAiScan():
 
 
 def takePicture():
+    print("Taking a picture...")
     if __device__:
         led.ledON()
         currTime = datetime.now().strftime("%m-%d-%y_%H:%M:%S")
