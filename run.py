@@ -189,6 +189,13 @@ def run_once(f):
 def takeInitialPicture():
     if __device__:
         takePicture()
+    # update the device feedback
+    feedback = {
+        "lastPill": "",
+        "notes": "Took check-up image",
+    }
+    updateStatus(feedback)
+
     print("...Initial picture check...")
     # check the platform
     sleep(10)
