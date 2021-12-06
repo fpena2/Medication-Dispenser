@@ -1,6 +1,9 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
+# disable warnings
+GPIO.setwarnings(False)
+
 # Pin Configuration (GPIO)
 chanList1 = [17, 18, 27, 22]  # right side or pill_1
 chanList2 = [26, 19, 13, 6]  # lift side or pill_2
