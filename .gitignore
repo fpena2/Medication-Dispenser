@@ -1,3 +1,9 @@
+# Dev folders 
+output/
+src/output/
+src/output/__pycache__/
+msg/archive
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
