@@ -19,7 +19,6 @@ if __device__:
 
 # Input to the Objects
 # msgController
-# bucket = "imgstore-pi"
 bucket = "storagebucket20402-dev"
 # commController
 bucketImgDest = "images/"
@@ -147,10 +146,14 @@ def takePicture(pillType):
         print(picture)
         led.ledOFF()
         awsPicStore.sendFile(picture)
-        # update msg
-        lastImgName = os.path.basename(picture)
 
         # update the device feedback
+        lastImgName = os.path.basename(picture)
+
+        notes = "Your medication is ready!"
+        if pillType == "":
+            notes = "Took check-up image"
+
         feedback = {"lastPill": pillType, "lastImg": lastImgName,
                     "notes": "Device has take a picture"}
         updateStatus(feedback)
@@ -193,12 +196,6 @@ def run_once(f):
 def takeInitialPicture():
     if __device__:
         takePicture("")
-    # update the device feedback
-    # feedback = {
-    #     "lastPill": "",
-    #     "notes": "Took check-up image",
-    # }
-    # updateStatus(feedback)
 
     print("...Initial picture check...")
     # check the platform
