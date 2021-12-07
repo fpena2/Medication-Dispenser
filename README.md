@@ -21,9 +21,11 @@ The mobile frontend will allow doctors to receive a live image feed of the state
 
 ## Installation 
 Simply clone this reposition into your Raspberry PI and execute the main file. 
-`Git clone https://github.com/fpena2/Medication-Dispenser.git`
-`cd Medication-Dispenser`
-`python3 run.py`
+```
+$ Git clone https://github.com/fpena2/Medication-Dispenser.git
+$ cd Medication-Dispenser
+$ python3 run.py
+```
 
 ## Pinout and Connections 
 
