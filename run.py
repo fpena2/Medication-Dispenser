@@ -136,7 +136,7 @@ def checkAiScan():
         return result
 
 
-def takePicture():
+def takePicture(pillType):
     print("Taking a picture...")
     if __device__:
         led.ledON()
@@ -149,7 +149,11 @@ def takePicture():
         awsPicStore.sendFile(picture)
         # update msg
         lastImgName = os.path.basename(picture)
-        updateStatus({"lastImg": lastImgName})
+
+        # update the device feedback
+        feedback = {"lastPill": pillType, "lastImg": lastImgName,
+                    "notes": "Your medication is ready!"}
+        updateStatus(feedback)
 
     print("Took a picture...")
     return
@@ -248,22 +252,11 @@ def loop():
 
                     if dropPill == "pill_1":
                         dropPill_1()
-                        takePicture()
-                        # update the device feedback
-                        feedback = {
-                            "lastPill": typeData[dropPill],
-                            "notes": "Your medication is ready!",
-                        }
-                        updateStatus(feedback)
+                        takePicture(typeData[dropPill])
+
                     if dropPill == "pill_2":
                         dropPill_2()
-                        takePicture()
-                        # update the device feedback
-                        feedback = {
-                            "lastPill": typeData[dropPill],
-                            "notes": "Your medication is ready!",
-                        }
-                        updateStatus(feedback)
+                        takePicture(typeData[dropPill])
 
                 else:
                     print("(((Platform needs to be cleared)))")
