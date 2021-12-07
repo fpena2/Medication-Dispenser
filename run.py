@@ -152,7 +152,7 @@ def takePicture(pillType):
 
         # update the device feedback
         feedback = {"lastPill": pillType, "lastImg": lastImgName,
-                    "notes": "Your medication is ready!"}
+                    "notes": "Device has take a picture"}
         updateStatus(feedback)
 
     print("Took a picture...")
@@ -192,13 +192,13 @@ def run_once(f):
 @run_once
 def takeInitialPicture():
     if __device__:
-        takePicture()
+        takePicture("")
     # update the device feedback
-    feedback = {
-        "lastPill": "",
-        "notes": "Took check-up image",
-    }
-    updateStatus(feedback)
+    # feedback = {
+    #     "lastPill": "",
+    #     "notes": "Took check-up image",
+    # }
+    # updateStatus(feedback)
 
     print("...Initial picture check...")
     # check the platform
