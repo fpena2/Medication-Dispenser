@@ -12,6 +12,9 @@ The mobile frontend will allow doctors to receive a live image feed of the state
   + with Raspberry Pi OS
 + 5VDC Stepper Motor (28BYJ-48) and ULN2003 Driver
 + Raspberry Pi Camera Module (from Aokin)
++ Xiaoyztan White Light LED (Power: 1 Watt, Forward Current: 350mA, Forward Voltage: 3.0-3.2V)
+  + 2N222 NPN Transistor 
+  + One of each (10Ohms and 220 Ohms resistor)
 
 ## Software Requirements
 + Python
@@ -29,11 +32,15 @@ $ python3 run.py
 
 ## Pinout and Connections 
 
-+ Motor 1 (Right Side)
+1. Motor 1 and Motor 2
+<p style="width: 50%;">
+<img src="./schematics/Motor.png"></img>
+</p>
 
-+ Motor 2 (Left Side)
-
-+ LED 
+2. LED 
+<p style="width: 50%;">
+<img src="./schematics/LED.png"></img>
+</p>
 
 ## Contributing 
 
