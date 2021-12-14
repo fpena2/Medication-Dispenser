@@ -6,11 +6,12 @@ from datetime import datetime, timedelta
 from functools import wraps
 from time import sleep
 
-__device__ = True if "pi" in os.environ['USER'] else False
+__device__ = True if "pi" in os.environ["USER"] else False
 
 sys.path.append(os.path.abspath("./src/"))  # nopep8
 from initMsg import msgController
 from initComm import commController
+
 if __device__:
     from initCam import imgController
     from initLED import ledController
@@ -58,7 +59,7 @@ def checkDeployTime():
         if data == []:
             return [{}, {}, {}]
 
-        data = sorted(data, key=lambda d: d['schedule'])
+        data = sorted(data, key=lambda d: d["schedule"])
         for entry in data:
             if entry["label"] == "Channel 1" and deploy_p1 == "":
                 t = datetime.fromisoformat(entry["schedule"])
@@ -154,8 +155,11 @@ def takePicture(pillType):
         if pillType == "":
             notes = "Took check-up image"
 
-        feedback = {"lastPill": pillType, "lastImg": lastImgName,
-                    "notes": "Device has take a picture"}
+        feedback = {
+            "lastPill": pillType,
+            "lastImg": lastImgName,
+            "notes": "Device has take a picture",
+        }
         updateStatus(feedback)
 
     print("Took a picture...")
@@ -188,6 +192,7 @@ def run_once(f):
             result = f(*args, **kwargs)
             wrapper.has_run = True
             return result
+
     wrapper.has_run = False
     return wrapper
 
@@ -238,7 +243,7 @@ def loop():
             delta = delta.total_seconds()
             print(delta)
 
-            if (delta > 0 and delta < 60):
+            if delta > 0 and delta < 60:
                 # take picture once
                 if takeInitialPicture() == True:
                     print("(((Initial picture = Platform is empty)))")

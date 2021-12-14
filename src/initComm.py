@@ -22,9 +22,4 @@ class commController:
 
     def startComm(self, name, data):
         s3 = boto3.resource("s3")
-        s3.Bucket(self.bucket).put_object(
-            Key=self.bucketFolder + name, Body=data)
-
-
-# a = commController("storagebucket20402-dev", "images/")
-# a.sendFile("/home/che/Pictures/moon.png")
+        s3.Bucket(self.bucket).put_object(Key=self.bucketFolder + name, Body=data)

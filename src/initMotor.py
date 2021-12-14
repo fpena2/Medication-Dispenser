@@ -13,23 +13,25 @@ delay = 0.001
 
 # Rotation
 rot_360 = 4096
-rot_180 = int(rot_360/2)
-rot_90 = int(rot_360/4)
-rot_45 = int(rot_360/8)
+rot_180 = int(rot_360 / 2)
+rot_90 = int(rot_360 / 4)
+rot_45 = int(rot_360 / 8)
 
 # State
 lock = 1
 release = -1
 
 # Step Motor Sequence
-sequence = [[1, 0, 0, 1],
-            [1, 0, 0, 0],
-            [1, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 1, 1, 0],
-            [0, 0, 1, 0],
-            [0, 0, 1, 1],
-            [0, 0, 0, 1]]
+sequence = [
+    [1, 0, 0, 1],
+    [1, 0, 0, 0],
+    [1, 1, 0, 0],
+    [0, 1, 0, 0],
+    [0, 1, 1, 0],
+    [0, 0, 1, 0],
+    [0, 0, 1, 1],
+    [0, 0, 0, 1],
+]
 
 
 class motorController:
