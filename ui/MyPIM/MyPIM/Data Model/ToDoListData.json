@@ -1,0 +1,162 @@
+[
+    {
+        "id": "3615D2F3-6958-4742-92E5-93076CAAF727",
+        "title": "Go Grocery Shopping",
+        "description": "Barbecue sauce; Brown rice; Extra virgin olive oil, canola oil, nonfat cooking spray; Ground turkey or chicken; Hot pepper sauce; Jarred capers and olives; Mustard; Red-wine vinegar; Reduced-sodium lunchmeat (turkey, roast beef); Salmon, halibut, trout, mackerel, or your favorite seafood; Salsa; Skinless chicken or turkey breasts; Steel-cut or instant oatmeal; Tomato sauce; Whole wheat or whole-grain pasta; Whole-grain cereal bars; Whole-grain or multigrain cereals.",
+        "priority": "Normal",
+        "completed": true,
+        "dueDateAndTime": "2020-09-06 at 20:00"
+    },
+    {
+        "id": "F94E797E-9E45-4477-82A4-0CA91FA7EF81",
+        "title": "Get Ready for Thanksgiving Break",
+        "description": "The Thanksgiving holiday is the time period to be with the family and spend quality time with all family members.",
+        "priority": "High",
+        "completed": false,
+        "dueDateAndTime": "2020-11-22 at 17:00"
+    },
+    {
+        "id": "A1908E8E-301C-4F1E-AD85-281EBDDA977B",
+        "title": "Buy MacBook Pro 16-inch",
+        "description": "Buy a brand new MacBook Pro 16-inch with 16GB of 2666MHz DDR4 onboard memory, 2.3GHz 8‑core Intel Core i9 with 16MB shared L3 cache, and 512GB SSD.",
+        "priority": "High",
+        "completed": true,
+        "dueDateAndTime": "2020-08-15 at 14:00"
+    },
+    {
+        "id": "B9FF3C06-4187-45FD-9301-07C174F724DB",
+        "title": "Go Hiking at Cascades",
+        "description": "Cascades is a highly scenic, 4-mile round-trip trail along a shaded mountain creek to a 66-foot waterfall within Jefferson National Forest. Hike is low to moderate difficulty. Picnicking area is at the beginning of the trail.  Native trout fishing available in the Little Stony Creek.  Accessible restrooms at the trailhead. Picnic area. Water hydrant for filling water bottles available in the recreation area. Directions:  From Pembroke, turn right on VA 623 (Cascades Drive). Follow for approximately 4 miles; road ends at the recreation area.",
+        "priority": "Low",
+        "completed": false,
+        "dueDateAndTime": "2020-12-05 at 18:00"
+    },
+    {
+        "id": "09D65EEE-5CAF-4E42-8477-687274FCD40D",
+        "title": "Study for CS3714 Midterm Exam",
+        "description": "CS3714 Midterm Examination is taken as Open Books and Notes and consists of developing an iOS app during the exam period based on a given design specification. Part A: In-Class. Part B: Take-Home (continuation of the exam).",
+        "priority": "High",
+        "completed": true,
+        "dueDateAndTime": "2020-09-30 at 23:00"
+    },
+    {
+        "id": "DF68676A-83CE-4219-AEF3-8FAC0E2CC797",
+        "title": "Order iPhone 11 Pro Max",
+        "description": "Order iPhone 11 Pro Max, Gold 256GB with AppleCare+. It has Super Retina XDR display 6.5‑inch (diagonal) all‑screen OLED Multi‑Touch display HDR display 2688‑by‑1242-pixel resolution at 458 ppi; A13 Bionic chip Third‑generation Neural Engine; Triple 12MP Ultra Wide, Wide, and Telephoto cameras.",
+        "priority": "High",
+        "completed": true,
+        "dueDateAndTime": "2020-09-20 at 11:30"
+    },
+    {
+        "id": "B26E483A-764D-416F-BE34-B51592F98AD1",
+        "title": "Get Ready for the Party",
+        "description": "Are you really wanting to have a good time? Throwing a party is a great way to celebrate life and have fun with your good friends! Learn how to pick out your party theme, what kind of supplies -- like food and drinks -- you might need, and activities to do during your party. Check WikiHow article that explains how to hold your next amazing party and create memories you'll never forget.",
+        "priority": "Low",
+        "completed": false,
+        "dueDateAndTime": "2020-12-07 at 18:30"
+    },
+    {
+        "id": "6ACFD394-A870-42FE-8F5A-48601C070D7B",
+        "title": "Wash Car",
+        "description": "Southern Classic Soft Cloth Auto Wash, Address: 2855 N Franklin St, Christiansburg, VA 24073, Phone: (540) 382-1450",
+        "priority": "Normal",
+        "completed": true,
+        "dueDateAndTime": "2020-10-02 at 15:00"
+    },
+    {
+        "id": "26C850E1-D566-42B6-BE09-7958CF5F8735",
+        "title": "Rent an Apartment",
+        "description": "Finding the right apartment to call home can be challenging in Washington, D.C. The capital region is one of the most expensive places to live in the nation and many areas of the city are changing rapidly. A wide variety of rental properties are available ranging from single room studios to 3-bedroom luxury apartments or penthouses. Search the web and learn the key things to consider and some resources to help you with your search. See for example: https://www.tripsavvy.com/how-to-find-an-apartment-in-dc-1039562",
+        "priority": "Normal",
+        "completed": false,
+        "dueDateAndTime": "2021-01-12 at 19:00"
+    },
+    {
+        "id": "E0987077-9378-487A-9D77-82C7DF6852E6",
+        "title": "Go Biking on Huckleberry Trail",
+        "description": "The Huckleberry Trail is an asphalt-paved bike/pedestrian path. The trail currently runs from the Blacksburg library to the New River Mall. There are distance markers every half mile. At 2.83 miles it crosses the road to Warm Hearth, at 3.43 miles it crosses Hightop, and at 3.90 it crosses Merrimac. The total distance from the library to the mall is 5.762 miles.",
+        "priority": "Normal",
+        "completed": false,
+        "dueDateAndTime": "2020-11-09 at 17:00"
+    },
+    {
+        "id": "B210993B-A823-4F2D-8BE2-9F2541B30250",
+        "title": "Buy tickets for 2019 ACC Football Championship Game",
+        "description": "The 2019 ACC Football Championship Game will be played on December 7, 2019. It will be the 15th annual ACC Championship Game, played to determine the 2019 champion of the Atlantic Coast Conference football season. The game will be held at Bank of America Stadium in Charlotte, North Carolina.",
+        "priority": "Low",
+        "completed": true,
+        "dueDateAndTime": "2019-12-01 at 22:00"
+    },
+    {
+        "id": "4EF57D88-F29C-4140-AB8B-89B1441A64C6",
+        "title": "Get Tickets for Moss Arts Center",
+        "description": "Virginia Tech’s Moss Arts Center presents renowned artists from around the globe and from close to home, with a special focus on experiences that expand cultural awareness and deepen understanding. Uniquely partnered with the Institute for Creativity, Arts, and Technology, the Moss Arts Center houses the Street and Davis Performance Hall and its Anne and Ellen Fife Theatre, visual art galleries, the experimental venue the Cube, and research studios.",
+        "priority": "Normal",
+        "completed": true,
+        "dueDateAndTime": "2020-07-24 at 18:00"
+    },
+    {
+        "id": "028DCCAA-92DD-411C-8B79-F092090EC124",
+        "title": "Buy Tickets for Virginia Tech-Duke Football Game",
+        "description": "College Football: Duke vs. Virginia Tech (White Effect) at Lane Stadium, Blacksburg on Friday, September 27, 2019 at 7:00 - 11:00 pm.",
+        "priority": "High",
+        "completed": true,
+        "dueDateAndTime": "2019-09-24 at 20:00"
+    },
+    {
+        "id": "C35D0708-3DB0-4AE5-8B5C-C048823FFC9F",
+        "title": "See a Movie at the Lyric Theatre",
+        "description": "Since 1998, the Lyric has operated a not-for-profit movie theatre and community center in the heart of downtown Blacksburg, Virginia. It is located on College Avenue across the street from Virginia Tech's main campus. See http://www.thelyric.com/ for more information.",
+        "priority": "Low",
+        "completed": false,
+        "dueDateAndTime": "2020-11-25 at 19:15"
+    },
+    {
+        "id": "FBD29270-99AE-417C-A803-5333BC62395E",
+        "title": "Visit Alexander Black House",
+        "description": "The Alexander Black House is a historical house of Queen Anne Victorian architectural style located at 204 Draper Rd SW, Blacksburg, VA 24060. This historic house was first built in 1897 by Alexander Black; since then the house has been renovated to allow public access to the first floor and we hope to continue with further preservation.",
+        "priority": "Low",
+        "completed": true,
+        "dueDateAndTime": "2020-10-02 at 13:00"
+    },
+    {
+        "id": "392535A4-9A25-4C59-9BD4-4F2D29F37656",
+        "title": "Visit Arlington National Cemetery",
+        "description": "Arlington National Cemetery is a United States military cemetery in Arlington County, Virginia, across the Potomac River from Washington, D.C., in whose 624 acres (253 ha) the dead of the nation's conflicts have been buried, beginning with the American Civil War, as well as reinterred dead from earlier wars. The United States Department of the Army, a component of the United States Department of Defense, controls the cemetery. [Wikipedia]",
+        "priority": "Normal",
+        "completed": false,
+        "dueDateAndTime": "2020-11-30 at 10:00"
+    },
+    {
+        "id": "30E43B60-E6D9-4D0F-8814-B6D465D6F79E",
+        "title": "Plan a Trip for Busch Gardens",
+        "description": "Busch Gardens Williamsburg (formerly known as Busch Gardens Europe and Busch Gardens: The Old Country) is a 383-acre (155 ha) theme park located in James City County, Virginia, about 60.40 miles (97.20 km) northwest of Virginia Beach, originally developed by Anheuser-Busch (A-B) and currently owned by SeaWorld Entertainment, a division of Blackstone Group. The park opened on May 16, 1975, adjacent to Anheuser-Busch's brewery and near its other developments including the Kingsmill Resort complex. The park is themed around various European countries. [Wikipedia]",
+        "priority": "High",
+        "completed": false,
+        "dueDateAndTime": "2020-12-11 at 16:00"
+    },
+    {
+        "id": "50B37643-2753-4C5B-A687-226ACF4E3F8F",
+        "title": "Run in Blue Ridge Marathon",
+        "description": "The Foot Levelers Blue Ridge Marathon Series has earned its title as “America’s Toughest Road Marathon” by challenging runners with over 7,430 ft. in elevation change, more than any other road marathon in the U.S.  This race is the ONLY marathon that runs along the famously scenic Blue Ridge Parkway, and proceeds from this non-profit event benefit the parkway and a dozen local charities every year.  The full, half and 10k all prove equally challenging yet rewarding on this mountainous course, and all runners are rewarded with free socks, unique finishers’ medals, shirts and local craft beer at the festival-like finish in downtown Roanoke.",
+        "priority": "Normal",
+        "completed": false,
+        "dueDateAndTime": "2021-04-18 at 10:00"
+    },
+    {
+        "id": "25ABBC3E-BFB3-4018-988C-5F85DD5BF643",
+        "title": "Meet Friends at Water Country USA",
+        "description": "Water Country USA is a water theme park in Williamsburg, Virginia, USA. It is the Mid-Atlantic's largest water park, and it offers live entertainment, shops and restaurants, water rides, and other attractions, all of which have a 1950s or 1960s surf theme. It is owned by SeaWorld Entertainment. The park is just a few miles away from Busch Gardens Williamsburg, with which it shares clientele. Multi-park passes are available, and a parking pass at Water Country USA is valid for same-day entry to Busch Gardens Williamsburg. [Wikipedia]",
+        "priority": "Low",
+        "completed": true,
+        "dueDateAndTime": "2020-08-14 at 09:30"
+    },
+    {
+        "id": "908DD798-CFB8-4018-90B8-A8DCAC3D2A91",
+        "title": "Join Family for Vacation in Rome",
+        "description": "Rome is a city and special comune (named Roma Capitale) in Italy. Rome is the capital of Italy and of the Lazio region. With 2.9 million residents in 1,285 km2 (496.1 sq mi), it is also the country's largest and most populated comune and fourth-most populous city in the European Union by population within city limits. The Metropolitan City of Rome has a population of 4.3 million residents. The city is located in the central-western portion of the Italian Peninsula, within Lazio (Latium), along the shores of Tiber river. The Vatican City is an independent country geographically located within the city boundaries of Rome, the only existing example of a country within a city: for this reason Rome has been often defined as capital of two states. [Wikipedia]",
+        "priority": "High",
+        "completed": false,
+        "dueDateAndTime": "2020-12-27 at 14:00"
+    }
+]
