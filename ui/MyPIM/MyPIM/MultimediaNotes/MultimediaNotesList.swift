@@ -65,7 +65,7 @@ struct multimediaList: View {
         } else {
             fatalError("Unable to encode photo data!")
         }
-        uploadData()
+        //uploadData()
     }
   
     /*
