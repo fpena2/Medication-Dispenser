@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mypim-dev-20402-authRole",
+      "UnauthRoleArn": "arn:aws:iam::488893900157:role/amplify-mypim-dev-20402-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::488893900157:role/amplify-mypim-dev-20402-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-mypim-dev-20402-deployment",
+      "UnauthRoleName": "amplify-mypim-dev-20402-unauthRole",
+      "StackName": "amplify-mypim-dev-20402",
+      "StackId": "arn:aws:cloudformation:us-east-2:488893900157:stack/amplify-mypim-dev-20402/143a9460-323d-11ec-8baa-06b00cbca538",
+      "AmplifyAppId": "dcfjwgg9mr6dr"
+    },
+    "categories": {
+      "auth": {
+        "mypima1286130": {}
+      }
+    }
+  }
+}

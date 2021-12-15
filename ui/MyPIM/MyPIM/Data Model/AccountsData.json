@@ -1,0 +1,137 @@
+[
+    {
+        "id": "26A715B7-A82D-4EDD-866F-D1F8230C3135",
+        "title": "Bank of America",
+        "category": "Bank",
+        "url": "https://www.bankofamerica.com/",
+        "username": "JenniferLawrence",
+        "password": "Dark-Phoenix/2019",
+        "notes": "Bank of America is a global leader in wealth management, corporate and investment banking and trading across a broad range of asset classes, serving corporations, governments, institutions and individuals around the world."
+    },
+    {
+        "id": "7D1CC2E1-F068-4A4F-BDCE-026AEF93125A",
+        "title": "CS3714",
+        "category": "Computer",
+        "url": "https://manta.cs.vt.edu/cs3714/",
+        "username": "Lawrence.Jennifer",
+        "password": "Red$Sparrow/2018",
+        "notes": "The primary objective of CS3714 is to teach how to provide software-based solutions to complex problems by using Apple mobile devices and Mac computers."
+    },
+    {
+        "id": "B6500D8D-1792-4B5F-9D0C-835C5B662FB8",
+        "title": "CapitalOne VISA",
+        "category": "CreditCard",
+        "url": "https://www.capitalone.com/",
+        "username": "Jen.Lawrence",
+        "password": "X-Men:Apocalypse/2016",
+        "notes": "Capital One Financial Corporation is an American bank holding company specializing in credit cards, auto loans, banking, and savings accounts, headquartered in McLean, Virginia with operations primarily in the United States."
+    },
+    {
+        "id": "CE577131-ADB9-4E18-AF3C-81F6C284E353",
+        "title": "Fandango",
+        "category": "Other",
+        "url": "https://www.fandango.com/",
+        "username": "JenniferLawrenceStar",
+        "password": "Mockingjay%Part2/2015",
+        "notes": "U.S. Fandango Media, LLC is an American ticketing company that sells movie tickets via their website as well as through their mobile app, as well as a provider of television and streaming media information, e.g., through its subsidiaries Flixster, Movies.com, and Rotten Tomatoes."
+    },
+    {
+        "id": "049FB231-E066-4A74-996B-FC66A136E6C2",
+        "title": "Gmail",
+        "category": "Email",
+        "url": "http://www.google.com/gmail",
+        "username": "LawrenceJennifer",
+        "password": "The#Hunger%Games/2012",
+        "notes": "Gmail is a free email service provided by Google. In many ways, Gmail is like any other email service: You can send and receive emails, block spam, create an address book, and perform other basic email tasks."
+    },
+    {
+        "id": "EC2A4D95-7E92-4C2F-9156-C26CBEE347E1",
+        "title": "Apple Developer Program",
+        "category": "Membership",
+        "url": "https://developer.apple.com/programs/",
+        "username": "Jennifer.Lawrence",
+        "password": "Catching-Fire/2013",
+        "notes": "Apple Developer Program benefits and resources are described at https://developer.apple.com/support/compare-memberships/"
+    },
+    {
+        "id": "58D90B4B-4BD8-4A29-ACC4-C79E51D6C1EE",
+        "title": "Amazon.com",
+        "category": "Shopping",
+        "url": "https://www.amazon.com/",
+        "username": "JenLawrenceStar",
+        "password": "Katniss-Everdeen/2013",
+        "notes": "In the beginning, Amazon.com sold books. Today Amazon is a titan of e-commerce, logistics, payments, hardware, data storage, and media. It dabbles in plenty more industries. It is the go-to site for online shoppers and merchants alike, a modern necessity that independent sellers love to hate."
+    },
+    {
+        "id": "94C25E00-DDF4-46D6-92E3-9083D9A5538D",
+        "title": "Citibank",
+        "category": "Bank",
+        "url": "https://citi.com/",
+        "username": "Jennifer.LawrenceStar",
+        "password": "X-Men:DaysOfFuturePast",
+        "notes": "Citibank provides various banking and financial services such as debit cards, credit cards, deposit accounts, loans, etc."
+    },
+    {
+        "id": "4028FF47-7924-40EC-AD44-8FED656A2D3B",
+        "title": "CS3754",
+        "category": "Computer",
+        "url": "https://manta.cs.vt.edu/cs3754/",
+        "username": "JenLawrence",
+        "password": "Mockingjay-Part/I",
+        "notes": "Dr. Balci's CS3754 introduces the fundamentals, design patterns, interfaces, frameworks, and technologies underlying cloud software development. It teaches hands-on how to develop distributed multitiered enterprise software applications that run on a server computer and used by a user with a web browser over the Internet on a network-connected computer such as desktop, laptop or handheld computer (tablet, smartphone, or mobile device)."
+    },
+    {
+        "id": "5AE66EC1-5BF7-4292-AC27-BD138DCEC2CF",
+        "title": "Apple Card",
+        "category": "CreditCard",
+        "url": "https://www.apple.com/apple-card/",
+        "username": "LawrenceJenniferStar",
+        "password": "American/Hustle:2013",
+        "notes": "When you buy something using Apple Card, you get a percentage of your purchase back in Daily Cash. It is real cash, so unlike rewards, it never expires or loses its value."
+    },
+    {
+        "id": "56CDDB2B-0E1C-42AC-B768-02DFAAE2CAF7",
+        "title": "Hyatt Corporation",
+        "category": "Other",
+        "url": "https://www.hyatt.com/",
+        "username": "Jen.LawrenceStar",
+        "password": "Silver*Linings*Playbook",
+        "notes": "Hyatt Hotels Corporation, commonly known as Hyatt, is an American multinational hospitality company headquartered in the Riverside Plaza area of Chicago that manages and franchises luxury and business hotels, resorts, and vacation properties."
+    },
+    {
+        "id": "356EF8AC-0FA7-4588-B7DF-4141B3EF96C6",
+        "title": "Microsoft Outlook",
+        "category": "Email",
+        "url": "https://microsoft.com/outlook",
+        "username": "Lawrence.Jen",
+        "password": "X-Men:First$Class/2011",
+        "notes": "Microsoft Outlook is an application that is used mainly to send and receive emails. It can also be used to manage various types of personal data including calendar appointments and similar entries, tasks, contacts, and notes."
+    },
+    {
+        "id": "D8BCEBE6-C8B6-4EA0-8D30-A6AB5CBDE66B",
+        "title": "Google Developer",
+        "category": "Membership",
+        "url": "https://developers.google.com/",
+        "username": "LawrenceJen",
+        "password": "Like-Crazy/Sam",
+        "notes": "Google Developers is Google's site for software development tools and platforms, application programming interfaces (APIs), and technical resources."
+    },
+    {
+        "id": "3474BAFD-13A8-4C1A-9982-C88FFC1F9BFD",
+        "title": "Zappos.com",
+        "category": "Shopping",
+        "url": "https://www.zappos.com/",
+        "username": "Lawrence.JenniferStar",
+        "password": "HouseAtTheEndOfTheStreet",
+        "notes": "Zappos.com is an online shoe and clothing retailer based in Las Vegas, Nevada, United States."
+    },
+    {
+        "id": "71CA342A-C026-432E-B2F1-0729C9003C4B",
+        "title": "Yahoo Finance",
+        "category": "Other",
+        "url": "https://finance.yahoo.com/",
+        "username": "Lawrence.JenStar",
+        "password": "X-Men:Mystique/2011",
+        "notes": "At Yahoo Finance, you get free stock quotes, up-to-date news, portfolio management resources, international market data, social interaction and mortgage rates that help you manage your financial life."
+    }
+]
