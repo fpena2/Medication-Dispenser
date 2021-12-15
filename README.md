@@ -22,7 +22,7 @@ The mobile frontend will allow doctors to receive a live image feed of the state
   + Note: `picamera` and `RPi` are preinstalled in Raspberry Pi OS 
 
 
-## Installation 
+## Installation and How-to-Run
 Simply clone this reposition into your Raspberry PI and execute the main file. 
 ```
 $ Git clone https://github.com/fpena2/Medication-Dispenser.git
