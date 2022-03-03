@@ -42,6 +42,22 @@ $ python3 run.py
 <img src="./schematics/LED.png"></img>
 </p>
 
+## Device Setup 
+1. Motor Setup 
+<p style="width: 50%;">
+<img src="./schematics/channel_setup.jpg"></img>
+</p>
+
+2. Use Plexiglas for securing the platform 
+<p style="width: 50%;">
+<img src="./schematics/platform.jpg"></img>
+</p>
+
+3. Device 
+<p style="width: 50%;">
+<img src="./schematics/final_device.jpg"></img>
+</p>
+
 ## Contributing 🚀
 If you would like to improve this system, simply fork the repo and make a pull request with your changes.
 
